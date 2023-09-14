@@ -1,0 +1,91 @@
+/**
+ * A simple math quiz that will generate two random integers between 1 and 20 along with math questions.
+ * The answer will be evaluated with either right or wrong and in the end a final score will be displayed.
+ * 
+ * @author Tariq Salama
+ * @version 20230908
+ **/
+import java.util.Random;
+import java.util.Scanner;
+
+public class FunWithBranching {
+
+   public static void main(String[] args) {
+      Scanner input = new Scanner(System.in);
+      
+      Random rnd = new Random();
+      
+      System.out.print("Enter a random number seed: ");
+            int seed = input.nextInt();
+            rnd.setSeed(seed);
+      
+     //user inputs their name
+      System.out.print("Enter your name: ");
+      String name = input.next();
+      
+      //Greets user by saying "Hello" plus their name
+      System.out.println("Hello " + name + "!");
+      
+      //prompts the user to answer the following questions
+      System.out.println("Please answer the following questions:\n");
+      
+      int numQuestions = 3;
+      int correctAnswers = 0;
+      int x = rnd.nextInt(20) + 1;
+      int y = rnd.nextInt(20) + 1;
+      int sum = 0;
+      
+      //first question is an addition problem that will state if "wrong" or "correct" based on user input
+      System.out.print(x + " + " + y + " = ");
+      sum = input.nextInt();
+      if (sum == (x + y)) {
+         System.out.println("Correct!");
+         correctAnswers++;
+      }
+      else  {
+         System.out.println("Wrong!");
+         System.out.println("The correct answer is: " + (x + y));
+      }
+      
+      //space is added between the first and second question
+      System.out.println();
+      
+      //second question is a subtraction problem that will state if "wrong" or "correct" based on user input
+      System.out.print(x + " - " + y + " = ");
+      sum = input.nextInt();
+      if (sum == (x - y)) {
+         System.out.println("Correct!");
+         correctAnswers++;
+      }
+      else  {
+         System.out.println("Wrong!");
+         System.out.println("The correct answer is: " + (x - y));
+      }
+      
+      //space is added between the second and third question
+      System.out.println();
+      
+      //third question is a multiplication problem that will state if "wrong" or "correct" based on user input
+      System.out.print(x + " * " + y + " = ");
+      int product = input.nextInt();
+      if (product == (x * y)) {
+         System.out.println("Correct!");
+         correctAnswers++;
+      }
+      else  {
+         System.out.println("Wrong!");
+         System.out.println("The correct answer is: " + (x * y));
+      }
+      
+      //space is added between the thrid question and final statement
+      System.out.println();
+      
+      double percentage = (double) correctAnswers / numQuestions * 100.0;
+      
+      //states to the user how many questions they got right
+      System.out.println("You got " + correctAnswers + " correct answers!");
+      
+      //states the percentage the user got based on how many questions the user got "wrong" or "correct"
+      System.out.println("That's " + percentage + "%!");
+   }
+}
